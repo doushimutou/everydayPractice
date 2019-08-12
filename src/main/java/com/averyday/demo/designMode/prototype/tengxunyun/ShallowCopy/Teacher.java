@@ -1,4 +1,4 @@
-package com.averyday.demo.designMode.factory.prototype.tengxunyun.ShallowCopy;
+package com.averyday.demo.designMode.prototype.tengxunyun.ShallowCopy;
 
 import lombok.Data;
 

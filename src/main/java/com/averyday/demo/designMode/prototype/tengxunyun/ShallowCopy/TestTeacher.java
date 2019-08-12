@@ -1,6 +1,4 @@
-package com.averyday.demo.designMode.factory.prototype.tengxunyun.ShallowCopy;
-
-import com.averyday.demo.designMode.factory.prototype.tengxunyun.ShallowCopy.Teacher;
+package com.averyday.demo.designMode.prototype.tengxunyun.ShallowCopy;
 
 /**
  * Description

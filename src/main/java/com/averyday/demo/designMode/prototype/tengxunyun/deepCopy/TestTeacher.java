@@ -1,4 +1,4 @@
-package com.averyday.demo.designMode.factory.prototype.tengxunyun.deepCopy;
+package com.averyday.demo.designMode.prototype.tengxunyun.deepCopy;
 
 import java.util.ArrayList;
 
