@@ -10,6 +10,7 @@ import java.util.HashMap;
 public class RemoveSql {
     public static void main(String[] args) {
         try {
+            //读
             File file = new File("src/9_16_59_22_192.sql");
             FileReader fileReader = new FileReader(file);
             BufferedReader reader = new BufferedReader(fileReader);
@@ -23,7 +24,7 @@ public class RemoveSql {
                 System.out.println(re);
             }
             reader.close();
-
+            //写
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
             baseString.forEach((k, v) -> {
                 try {
