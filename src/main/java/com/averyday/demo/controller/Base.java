@@ -8,26 +8,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.Semaphore;
+
 /**
  * Description
  * Author ayt  on
  */
 @RestController
-@RequestMapping(("base"))
+@RequestMapping(value = "base")
 @PropertySource("classpath:test.properties")
 public class Base {
+	private final Semaphore permit = new Semaphore(2, true);
 
-    @Value("${userName.test}")
-    String userName;
-    @Autowired
-    StudentDto studentDto;
+	@Value("${userName.test}")
+	String userName;
+	@Autowired
+	StudentDto studentDto;
 
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public String base() {
-
-        System.out.println(studentDto.getAddress());
-        String userName1 = userName;
-        return userName1;
-
-    }
+	@RequestMapping(value = "/get", method = RequestMethod.GET)
+	public String base() {
+		String userName1 = null;
+		try {
+			permit.acquire();
+			System.out.println(studentDto.getAddress());
+			userName1 = userName;
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} finally {
+			permit.release();
+		}
+		return userName1;
+	}
 }
